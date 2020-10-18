@@ -7,6 +7,8 @@
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
+	import store from '@/store';
+
 	export default defineComponent({
 		name: 'Word',
 		props: {
@@ -37,7 +39,11 @@
 					if (!v.includes(o.letter)) flag = false;
 				});
 
-				if (flag) this.$emit('gameover');
+				if (flag) {
+					store.addWord(this.word);
+
+					this.$emit('gameover');
+				}
 			},
 		},
 	});
