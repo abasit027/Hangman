@@ -14,7 +14,12 @@
 
 	<Notification :show="notification" />
 
-	<Popup :status="status" :word="word" @playagain="play" v-show="popup" />
+	<Popup @playagain="play" v-show="popup">
+		<h3>You {{ status }} {{ status === 'won' ? '🎉' : '😢' }}</h3>
+		<h4 v-if="status == 'lost'">
+			The word is: <span>{{ word }}</span>
+		</h4>
+	</Popup>
 </template>
 
 <script lang="ts">

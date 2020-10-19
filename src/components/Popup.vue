@@ -1,10 +1,6 @@
 <template>
 	<div id="popup">
-		<h3 v-if="status == 'won'">You Won 🎉</h3>
-		<h3 v-if="status == 'lost'">You Lost 😢</h3>
-		<h4 v-if="status == 'lost'">
-			The word is: <span>{{ word }}</span>
-		</h4>
+		<slot></slot>
 		<button @click="playAgain">Play Again</button>
 	</div>
 </template>
@@ -14,20 +10,6 @@
 
 	export default defineComponent({
 		name: 'Popup',
-		props: {
-			show: {
-				type: Boolean,
-				required: false,
-			},
-			status: {
-				type: String,
-				required: true,
-			},
-			word: {
-				type: String,
-				required: true,
-			},
-		},
 		emits: ['playagain'],
 		methods: {
 			playAgain() {
